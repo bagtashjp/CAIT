@@ -10,30 +10,51 @@ import javax.swing.GroupLayout;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
-
 import com.formdev.flatlaf.FlatDarkLaf;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.HeadlessException;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Base64;
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.OverlayLayout;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
-import javax.swing.border.LineBorder;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.SwingUtilities;
+import javax.swing.event.ChangeEvent;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
+import org.bson.Document;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -41,14 +62,19 @@ import javax.swing.border.TitledBorder;
  */
 public class CAIT extends javax.swing.JFrame {
 
+    DragonBallZ db;
+    User user;
+
     /**
      * Creates new form CAIT
      */
     public CAIT() {
+        db = new DragonBallZ("cait-db");
         UIManager.put("TabbedPane.selectedBackground", Color.red);
         initComponents();
         formMain.setVisible(false);
         registerPanel.setVisible(false);
+        img_reg_profilePic.setIcon(db.getImage(new ObjectId("68ee3df285395834c6cfe777")));
     }
 
     /**
@@ -61,15 +87,15 @@ public class CAIT extends javax.swing.JFrame {
     private void initComponents() {
 
         formMain = new JPanel();
-        jPanel1 = new JPanel();
-        jLabel9 = new JLabel();
-        jLabel6 = new JLabel();
-        jLabel8 = new JLabel();
-        jLabel1 = new JLabel();
-        jLabel3 = new JLabel();
-        jLabel4 = new JLabel();
-        jLabel2 = new JLabel();
-        left_panel = new JPanel();
+        pane_main_header = new JPanel();
+        pmhgr3 = new JLabel();
+        pmhgr2 = new JLabel();
+        pmhgr1 = new JLabel();
+        mainHeader_title = new JLabel();
+        mainHeader_lineBreak = new JLabel();
+        mainHeader_subtitle = new JLabel();
+        pane_main_topSeparator = new JLabel();
+        pane_left_panel = new JPanel();
         jButton2 = new JButton();
         jButton6 = new JButton();
         jButton7 = new JButton();
@@ -77,69 +103,31 @@ public class CAIT extends javax.swing.JFrame {
         jButton10 = new JButton();
         jButton11 = new JButton();
         jLabel5 = new JLabel();
-        jScrollPane1 = new JScrollPane();
+        pane_Feed = new JScrollPane();
         jPanel2 = new JPanel();
         jButton1 = new JButton();
-        jPanel9 = new JPanel();
-        jPanel10 = new JPanel();
-        jPanel11 = new JPanel();
-        jLabel19 = new JLabel();
-        jPanel12 = new JPanel();
-        jLabel20 = new JLabel();
-        jPanel13 = new JPanel();
-        jLabel21 = new JLabel();
-        jScrollPane4 = new JScrollPane();
-        jTextArea3 = new JTextArea();
-        jLabel22 = new JLabel();
-        jLabel23 = new JLabel();
-        jLabel24 = new JLabel();
-        jLabel25 = new JLabel();
-        jPanel14 = new JPanel();
-        jLabel26 = new JLabel();
-        jLabel27 = new JLabel();
-        jLabel28 = new JLabel();
-        jLabel29 = new JLabel();
-        jLabel30 = new JLabel();
-        jPanel27 = new JPanel();
-        jPanel28 = new JPanel();
-        jPanel29 = new JPanel();
-        jLabel55 = new JLabel();
-        jPanel30 = new JPanel();
-        jLabel56 = new JLabel();
-        jPanel31 = new JPanel();
-        jLabel57 = new JLabel();
-        jScrollPane7 = new JScrollPane();
-        jTextArea6 = new JTextArea();
-        jLabel58 = new JLabel();
-        jLabel59 = new JLabel();
-        jLabel60 = new JLabel();
+        post_bgcon = new JPanel();
+        post_namecon = new JPanel();
+        post_namelabel = new JLabel();
+        post_usericon = new JLabel();
+        post_contentcon = new JPanel();
+        post_headerlbl = new JLabel();
+        post_catcon = new JPanel();
+        post_catlist = new JLabel();
+        post_scrolldescription = new JScrollPane();
+        post_descriptionarea = new JTextArea();
+        post_scrollimages = new JScrollPane();
+        post_imagescon = new JPanel();
         jLabel61 = new JLabel();
-        jPanel32 = new JPanel();
-        jLabel62 = new JLabel();
-        jLabel63 = new JLabel();
-        jLabel64 = new JLabel();
-        jLabel65 = new JLabel();
-        jLabel66 = new JLabel();
-        jPanel33 = new JPanel();
-        jPanel34 = new JPanel();
-        jPanel35 = new JPanel();
-        jLabel67 = new JLabel();
-        jPanel36 = new JPanel();
-        jLabel68 = new JLabel();
-        jPanel37 = new JPanel();
-        jLabel69 = new JLabel();
-        jScrollPane8 = new JScrollPane();
-        jTextArea7 = new JTextArea();
-        jLabel70 = new JLabel();
-        jLabel71 = new JLabel();
-        jLabel72 = new JLabel();
-        jLabel73 = new JLabel();
-        jPanel38 = new JPanel();
-        jLabel74 = new JLabel();
-        jLabel75 = new JLabel();
-        jLabel76 = new JLabel();
-        jLabel77 = new JLabel();
-        jLabel78 = new JLabel();
+        jLabel58 = new JLabel();
+        post_departmentlbl = new JLabel();
+        post_urgencylbl = new JLabel();
+        post_favcon = new JLabel();
+        post_votecon = new JPanel();
+        post_upvotelbl = new JLabel();
+        post_downvotelbl = new JLabel();
+        post_votelbl = new JLabel();
+        jLabel1 = new JLabel();
         formAuth = new JPanel();
         jPanel3 = new JPanel();
         jLabel13 = new JLabel();
@@ -148,18 +136,26 @@ public class CAIT extends javax.swing.JFrame {
         jPanel5 = new JPanel();
         jLabel11 = new JLabel();
         signinPanel = new JPanel();
-        jTextField2 = new JTextField();
-        jButton3 = new JButton();
+        jtf_sig_username = new JTextField();
+        btn_sig_submit = new JButton();
         jLabel10 = new JLabel();
-        jPasswordField2 = new JPasswordField();
+        jpf_sig_password = new JPasswordField();
+        lbl_sig_errorMessage = new JLabel();
         registerPanel = new JPanel();
-        jTextField3 = new JTextField();
-        jButton4 = new JButton();
-        jPasswordField1 = new JPasswordField();
-        jPasswordField3 = new JPasswordField();
-        jPanel6 = new JPanel();
-        signin_tab_button = new JButton();
-        register_tab_button = new JButton();
+        jtf_reg_username = new JTextField();
+        btn_Register = new JButton();
+        jpf_reg_password = new JPasswordField();
+        jpf_reg_confirmPassword = new JPasswordField();
+        jtf_reg_lastName = new JTextField();
+        jtf_reg_firstName = new JTextField();
+        btn_reg_addProfilePic = new JButton();
+        img_reg_profilePic = new JLabel();
+        lbl_reg_errorMessage = new JLabel();
+        jLabel12 = new JLabel();
+        lbl_reg_successMessage = new JLabel();
+        pane_authTab = new JPanel();
+        btn_authTab_sig = new JButton();
+        btn_authTab_reg = new JButton();
         basePlate = new JPanel();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -168,56 +164,56 @@ public class CAIT extends javax.swing.JFrame {
 
         formMain.setLayout(null);
 
-        jPanel1.setBackground(new Color(44, 47, 134));
-        jPanel1.setForeground(new Color(153, 153, 153));
-        jPanel1.setLayout(null);
+        pane_main_header.setBackground(new Color(44, 47, 134));
+        pane_main_header.setForeground(new Color(153, 153, 153));
+        pane_main_header.setLayout(null);
 
-        jLabel9.setBackground(new Color(255, 255, 255));
-        jLabel9.setOpaque(true);
-        jPanel1.add(jLabel9);
-        jLabel9.setBounds(30, 40, 40, 5);
+        pmhgr3.setBackground(new Color(255, 255, 255));
+        pmhgr3.setOpaque(true);
+        pane_main_header.add(pmhgr3);
+        pmhgr3.setBounds(30, 40, 40, 5);
 
-        jLabel6.setBackground(new Color(255, 255, 255));
-        jLabel6.setOpaque(true);
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(30, 30, 40, 5);
+        pmhgr2.setBackground(new Color(255, 255, 255));
+        pmhgr2.setOpaque(true);
+        pane_main_header.add(pmhgr2);
+        pmhgr2.setBounds(30, 30, 40, 5);
 
-        jLabel8.setBackground(new Color(255, 255, 255));
-        jLabel8.setOpaque(true);
-        jPanel1.add(jLabel8);
-        jLabel8.setBounds(30, 20, 40, 5);
+        pmhgr1.setBackground(new Color(255, 255, 255));
+        pmhgr1.setOpaque(true);
+        pane_main_header.add(pmhgr1);
+        pmhgr1.setBounds(30, 20, 40, 5);
 
-        jLabel1.setFont(new Font("Product Sans Black", 0, 30)); // NOI18N
-        jLabel1.setForeground(new Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(SwingConstants.CENTER);
-        jLabel1.setText("corrective action & improvement tracker");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(0, 10, 1000, 37);
+        mainHeader_title.setFont(new Font("Product Sans Black", 0, 30)); // NOI18N
+        mainHeader_title.setForeground(new Color(255, 255, 255));
+        mainHeader_title.setHorizontalAlignment(SwingConstants.CENTER);
+        mainHeader_title.setText("corrective action & improvement tracker");
+        pane_main_header.add(mainHeader_title);
+        mainHeader_title.setBounds(0, 10, 1000, 37);
 
-        jLabel3.setBackground(new Color(255, 255, 255));
-        jLabel3.setOpaque(true);
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(350, 46, 350, 1);
+        mainHeader_lineBreak.setBackground(new Color(255, 255, 255));
+        mainHeader_lineBreak.setOpaque(true);
+        pane_main_header.add(mainHeader_lineBreak);
+        mainHeader_lineBreak.setBounds(350, 46, 350, 1);
 
-        jLabel4.setFont(new Font("Segoe UI", 2, 12)); // NOI18N
-        jLabel4.setForeground(new Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(SwingConstants.CENTER);
-        jLabel4.setText("the quick brown fox jumps over a lazy dog. pack my box with five dozen liquor jugs.");
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(210, 50, 620, 16);
+        mainHeader_subtitle.setFont(new Font("Segoe UI", 2, 12)); // NOI18N
+        mainHeader_subtitle.setForeground(new Color(255, 255, 255));
+        mainHeader_subtitle.setHorizontalAlignment(SwingConstants.CENTER);
+        mainHeader_subtitle.setText("the quick brown fox jumps over a lazy dog. pack my box with five dozen liquor jugs.");
+        pane_main_header.add(mainHeader_subtitle);
+        mainHeader_subtitle.setBounds(210, 50, 620, 16);
 
-        formMain.add(jPanel1);
-        jPanel1.setBounds(0, 0, 1000, 70);
+        formMain.add(pane_main_header);
+        pane_main_header.setBounds(0, 0, 1000, 70);
 
-        jLabel2.setBackground(new Color(0, 0, 0));
-        jLabel2.setOpaque(true);
-        formMain.add(jLabel2);
-        jLabel2.setBounds(0, 70, 1000, 2);
+        pane_main_topSeparator.setBackground(new Color(0, 0, 0));
+        pane_main_topSeparator.setOpaque(true);
+        formMain.add(pane_main_topSeparator);
+        pane_main_topSeparator.setBounds(0, 70, 1000, 2);
 
-        left_panel.setBackground(new Color(204, 204, 204));
-        left_panel.setLayout(null);
+        pane_left_panel.setBackground(new Color(136, 162, 187));
+        pane_left_panel.setLayout(null);
 
-        jButton2.setBackground(new Color(133, 26, 40));
+        jButton2.setBackground(new Color(198, 40, 40));
         jButton2.setFont(new Font("Product Sans Black", 1, 24)); // NOI18N
         jButton2.setForeground(new Color(255, 255, 255));
         jButton2.setIcon(new ImageIcon(getClass().getResource("/logout-icon.png"))); // NOI18N
@@ -225,7 +221,7 @@ public class CAIT extends javax.swing.JFrame {
         jButton2.setBorder(null);
         jButton2.setHorizontalAlignment(SwingConstants.LEFT);
         jButton2.addActionListener(this::jButton2ActionPerformed);
-        left_panel.add(jButton2);
+        pane_left_panel.add(jButton2);
         jButton2.setBounds(0, 630, 240, 40);
 
         jButton6.setBackground(new Color(62, 80, 156));
@@ -235,453 +231,222 @@ public class CAIT extends javax.swing.JFrame {
         jButton6.setText("settings");
         jButton6.setBorder(null);
         jButton6.setHorizontalAlignment(SwingConstants.LEFT);
-        left_panel.add(jButton6);
+        pane_left_panel.add(jButton6);
         jButton6.setBounds(0, 580, 240, 40);
 
-        jButton7.setBackground(new Color(0, 127, 255));
+        jButton7.setBackground(new Color(45, 127, 230));
         jButton7.setFont(new Font("Product Sans Black", 1, 24)); // NOI18N
         jButton7.setForeground(new Color(255, 255, 255));
         jButton7.setIcon(new ImageIcon(getClass().getResource("/progress-icon.png"))); // NOI18N
         jButton7.setText("progress");
         jButton7.setBorder(null);
         jButton7.setHorizontalAlignment(SwingConstants.LEFT);
-        left_panel.add(jButton7);
+        pane_left_panel.add(jButton7);
         jButton7.setBounds(0, 160, 240, 40);
 
-        jLabel7.setBackground(new Color(44, 47, 134));
+        jLabel7.setBackground(new Color(0, 102, 153));
         jLabel7.setFont(new Font("Product Sans Black", 0, 26)); // NOI18N
-        jLabel7.setForeground(new Color(0, 0, 0));
+        jLabel7.setForeground(new Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(SwingConstants.CENTER);
         jLabel7.setText("menu");
-        left_panel.add(jLabel7);
+        pane_left_panel.add(jLabel7);
         jLabel7.setBounds(0, 10, 80, 40);
 
-        jButton10.setBackground(new Color(0, 127, 255));
+        jButton10.setBackground(new Color(30, 136, 229));
         jButton10.setFont(new Font("Product Sans Black", 0, 24)); // NOI18N
         jButton10.setForeground(new Color(255, 255, 255));
         jButton10.setIcon(new ImageIcon(getClass().getResource("/feed-icon.png"))); // NOI18N
         jButton10.setText("reports");
         jButton10.setBorder(null);
         jButton10.setHorizontalAlignment(SwingConstants.LEFT);
-        left_panel.add(jButton10);
+        pane_left_panel.add(jButton10);
         jButton10.setBounds(0, 60, 240, 40);
 
-        jButton11.setBackground(new Color(0, 127, 255));
+        jButton11.setBackground(new Color(45, 127, 230));
         jButton11.setFont(new Font("Product Sans Black", 1, 24)); // NOI18N
         jButton11.setForeground(new Color(255, 255, 255));
         jButton11.setIcon(new ImageIcon(getClass().getResource("/profile-icon.png"))); // NOI18N
         jButton11.setText("profile");
         jButton11.setBorder(null);
         jButton11.setHorizontalAlignment(SwingConstants.LEFT);
-        left_panel.add(jButton11);
+        pane_left_panel.add(jButton11);
         jButton11.setBounds(0, 110, 240, 40);
 
-        jLabel5.setBackground(new Color(51, 51, 51));
+        jLabel5.setBackground(new Color(255, 255, 255));
         jLabel5.setOpaque(true);
-        left_panel.add(jLabel5);
+        pane_left_panel.add(jLabel5);
         jLabel5.setBounds(0, 50, 240, 1);
 
-        formMain.add(left_panel);
-        left_panel.setBounds(0, 72, 250, 678);
+        formMain.add(pane_left_panel);
+        pane_left_panel.setBounds(0, 72, 250, 678);
 
-        jScrollPane1.setBorder(null);
-        jScrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        pane_Feed.setBorder(null);
+        pane_Feed.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        jPanel2.setBackground(new Color(255, 255, 255));
-        jPanel2.setPreferredSize(new Dimension(750, 1000));
-        jPanel2.setLayout(null);
+        jPanel2.setBackground(new Color(238, 238, 238));
+        jPanel2.setPreferredSize(new Dimension(750, 390));
+        FlowLayout flowLayout1 = new FlowLayout();
+        flowLayout1.setAlignOnBaseline(true);
+        jPanel2.setLayout(flowLayout1);
 
         jButton1.setFont(new Font("Product Sans Black", 0, 14)); // NOI18N
         jButton1.setForeground(new Color(255, 255, 255));
         jButton1.setIcon(new ImageIcon(getClass().getResource("/create-post_icon.png"))); // NOI18N
         jButton1.setText("report an issue");
         jButton1.setBorder(new SoftBevelBorder(BevelBorder.RAISED));
+        jButton1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        jButton1.setPreferredSize(new Dimension(690, 50));
+        jButton1.addActionListener(this::jButton1ActionPerformed);
         jPanel2.add(jButton1);
-        jButton1.setBounds(40, 20, 680, 50);
 
-        jPanel9.setBackground(new Color(100, 100, 100));
-        jPanel9.setLayout(null);
+        post_bgcon.setBackground(new Color(153, 153, 153));
+        post_bgcon.setPreferredSize(new Dimension(690, 320));
+        post_bgcon.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                post_bgconMouseClicked(evt);
+            }
+        });
+        post_bgcon.setLayout(null);
 
-        jPanel10.setBackground(new Color(51, 51, 51));
-        jPanel10.setLayout(null);
+        post_namecon.setBackground(new Color(255, 255, 255));
+        post_namecon.setLayout(null);
 
-        jPanel11.setBackground(new Color(51, 51, 51));
-        jPanel11.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(255, 255, 255), 2), "Categories", TitledBorder.RIGHT, TitledBorder.BOTTOM, new Font("Segoe UI", 0, 12), new Color(255, 255, 255))); // NOI18N
-        jPanel11.setLayout(null);
+        post_namelabel.setFont(new Font("Century Gothic", 1, 16)); // NOI18N
+        post_namelabel.setForeground(new Color(51, 153, 0));
+        post_namelabel.setText("TANYA VON DEGURECHAFF");
+        post_namecon.add(post_namelabel);
+        post_namelabel.setBounds(50, 10, 310, 30);
 
-        jLabel19.setBackground(new Color(255, 153, 102));
-        jLabel19.setFont(new Font("Arial Narrow", 1, 14)); // NOI18N
-        jLabel19.setHorizontalAlignment(SwingConstants.CENTER);
-        jLabel19.setText("<html><center>\n<font color=\"#33FF33\">Environment</font>,\n<font color=\"#66CCFF\">Lifting</font>, \n<font color=\"#FF9999\">IDK</font>, \n<font color=\"#FF9966\">Garbage</font>\n\n");
-        jPanel11.add(jLabel19);
-        jLabel19.setBounds(10, 6, 340, 20);
+        post_usericon.setIcon(new ImageIcon(getClass().getResource("/testprofile.jpg"))); // NOI18N
+        post_namecon.add(post_usericon);
+        post_usericon.setBounds(10, 10, 30, 30);
 
-        jPanel10.add(jPanel11);
-        jPanel11.setBounds(320, 210, 360, 40);
+        post_bgcon.add(post_namecon);
+        post_namecon.setBounds(0, 10, 390, 50);
 
-        jPanel12.setBackground(new Color(51, 51, 51));
-        jPanel12.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(255, 255, 255), 2), "Department", TitledBorder.RIGHT, TitledBorder.BOTTOM, new Font("Segoe UI", 0, 12), new Color(255, 255, 255))); // NOI18N
-        jPanel12.setLayout(null);
+        post_contentcon.setBackground(new Color(255, 255, 255));
+        post_contentcon.setLayout(null);
 
-        jLabel20.setFont(new Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel20.setForeground(new Color(102, 255, 255));
-        jLabel20.setHorizontalAlignment(SwingConstants.CENTER);
-        jLabel20.setText("ENSO");
-        jPanel12.add(jLabel20);
-        jLabel20.setBounds(10, 6, 150, 20);
+        post_headerlbl.setFont(new Font("Arial", 1, 16)); // NOI18N
+        post_headerlbl.setForeground(new Color(0, 0, 0));
+        post_headerlbl.setText("POOR GARBAGE COLLECTION SYSTEM");
+        post_contentcon.add(post_headerlbl);
+        post_headerlbl.setBounds(10, 10, 370, 30);
 
-        jPanel10.add(jPanel12);
-        jPanel12.setBounds(140, 210, 170, 40);
+        post_catcon.setBackground(new Color(200, 200, 200));
+        post_catcon.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(51, 51, 51), 2), "categories", TitledBorder.RIGHT, TitledBorder.BOTTOM, new Font("Segoe UI", 1, 12), new Color(51, 51, 51))); // NOI18N
+        post_catcon.setOpaque(false);
+        post_catcon.setLayout(null);
 
-        jPanel13.setBackground(new Color(51, 51, 51));
-        jPanel13.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(255, 255, 255), 2), "Severity", TitledBorder.RIGHT, TitledBorder.BOTTOM, new Font("Segoe UI", 0, 12), new Color(255, 255, 255))); // NOI18N
-        jPanel13.setLayout(null);
+        post_catlist.setBackground(new Color(255, 153, 102));
+        post_catlist.setFont(new Font("Arial Narrow", 1, 14)); // NOI18N
+        post_catlist.setForeground(new Color(51, 51, 51));
+        post_catlist.setHorizontalAlignment(SwingConstants.CENTER);
+        post_catlist.setText("<html><center>\n<font color=\"green\">Environment</font>,\n<font color=\"red\">Lifting</font>, \n<font color=\"orange\">IDK</font>, \n<font color=\"blue\">Garbage</font>\n\n");
+        post_catcon.add(post_catlist);
+        post_catlist.setBounds(10, 6, 270, 20);
 
-        jLabel21.setFont(new Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel21.setForeground(new Color(255, 51, 51));
-        jLabel21.setHorizontalAlignment(SwingConstants.CENTER);
-        jLabel21.setText("HIGH");
-        jPanel13.add(jLabel21);
-        jLabel21.setBounds(10, 6, 100, 20);
+        post_contentcon.add(post_catcon);
+        post_catcon.setBounds(390, 218, 290, 40);
 
-        jPanel10.add(jPanel13);
-        jPanel13.setBounds(10, 210, 120, 40);
+        post_scrolldescription.setBorder(null);
 
-        jScrollPane4.setBorder(null);
+        post_descriptionarea.setEditable(false);
+        post_descriptionarea.setBackground(new Color(255, 255, 255));
+        post_descriptionarea.setColumns(20);
+        post_descriptionarea.setFont(new Font("Arial", 0, 14)); // NOI18N
+        post_descriptionarea.setForeground(new Color(51, 51, 51));
+        post_descriptionarea.setLineWrap(true);
+        post_descriptionarea.setRows(5);
+        post_descriptionarea.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac ligula nunc. Sed fringilla consequat mollis. Vestibulum lacus libero, pulvinar ut egestas ut, blandit ut est. Phasellus elementum fringilla lobortis. Donec at fermentum dolor. Fusce ullamcorper metus id lacus sodales pellentesque. Donec pretium tempor feugiat. Cras non mi Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac ligula nunc. Sed fringilla consequat mollis. Vestibulum lacus libero, pulvinar ut egestas ut, blandit ut est. Phasellus elementum fringilla lobortis. Donec at fermentum dolor. Fusce ullamcorper metus id lacus sodales pellentesque. Donec pretium tempor feugiat. Cras non mi non nunc efficitur tincidunt sed sed enim. non nunc efficitur tincidunt sed sed enim.");
+        post_descriptionarea.setWrapStyleWord(true);
+        post_descriptionarea.setBorder(null);
+        post_scrolldescription.setViewportView(post_descriptionarea);
 
-        jTextArea3.setBackground(new Color(51, 51, 51));
-        jTextArea3.setColumns(20);
-        jTextArea3.setFont(new Font("Segoe UI", 0, 14)); // NOI18N
-        jTextArea3.setForeground(new Color(255, 255, 255));
-        jTextArea3.setLineWrap(true);
-        jTextArea3.setRows(5);
-        jTextArea3.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac ligula nunc. Sed fringilla consequat mollis. Vestibulum lacus libero, pulvinar ut egestas ut, blandit ut est. Phasellus elementum fringilla lobortis. Donec at fermentum dolor. Fusce ullamcorper metus id lacus sodales pellentesque. Donec pretium tempor feugiat. Cras non mi Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac ligula nunc. Sed fringilla consequat mollis. Vestibulum lacus libero, pulvinar ut egestas ut, blandit ut est. Phasellus elementum fringilla lobortis. Donec at fermentum dolor. Fusce ullamcorper metus id lacus sodales pellentesque. Donec pretium tempor feugiat. Cras non mi non nunc efficitur tincidunt sed sed enim. non nunc efficitur tincidunt sed sed enim.");
-        jTextArea3.setWrapStyleWord(true);
-        jTextArea3.setBorder(null);
-        jScrollPane4.setViewportView(jTextArea3);
+        post_contentcon.add(post_scrolldescription);
+        post_scrolldescription.setBounds(10, 40, 370, 160);
 
-        jPanel10.add(jScrollPane4);
-        jScrollPane4.setBounds(10, 40, 320, 160);
+        post_scrollimages.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        jLabel22.setIcon(new ImageIcon(getClass().getResource("/feed_image_sample2.jpg"))); // NOI18N
-        jLabel22.setOpaque(true);
-        jPanel10.add(jLabel22);
-        jLabel22.setBounds(340, 110, 180, 90);
+        post_imagescon.setBackground(new Color(133, 138, 142));
+        post_imagescon.setOpaque(false);
+        post_imagescon.setLayout(new FlowLayout(FlowLayout.LEFT));
 
-        jLabel23.setIcon(new ImageIcon(getClass().getResource("/feed_image_sample3.jpg"))); // NOI18N
-        jLabel23.setOpaque(true);
-        jPanel10.add(jLabel23);
-        jLabel23.setBounds(530, 10, 143, 190);
+        jLabel61.setIcon(new ImageIcon(getClass().getResource("/tmp_square.png"))); // NOI18N
+        post_imagescon.add(jLabel61);
 
-        jLabel24.setFont(new Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel24.setForeground(new Color(255, 255, 255));
-        jLabel24.setText("Poor Garbage Collection System");
-        jPanel10.add(jLabel24);
-        jLabel24.setBounds(10, 10, 310, 30);
-
-        jLabel25.setIcon(new ImageIcon(getClass().getResource("/feed_image_sample1.jpg"))); // NOI18N
-        jLabel25.setOpaque(true);
-        jPanel10.add(jLabel25);
-        jLabel25.setBounds(340, 10, 180, 90);
-
-        jPanel9.add(jPanel10);
-        jPanel10.setBounds(0, 50, 690, 260);
-
-        jPanel14.setBackground(new Color(51, 51, 51));
-        jPanel14.setLayout(null);
-
-        jLabel26.setFont(new Font("Segoe UI Black", 0, 18)); // NOI18N
-        jLabel26.setForeground(new Color(255, 255, 255));
-        jLabel26.setText("Juan Dela Cruz");
-        jPanel14.add(jLabel26);
-        jLabel26.setBounds(60, 0, 180, 50);
-
-        jLabel27.setIcon(new ImageIcon(getClass().getResource("/testprofile.jpg"))); // NOI18N
-        jPanel14.add(jLabel27);
-        jLabel27.setBounds(5, 5, 40, 40);
-
-        jPanel9.add(jPanel14);
-        jPanel14.setBounds(0, 0, 240, 50);
-
-        jLabel28.setBackground(new Color(102, 0, 0));
-        jLabel28.setIcon(new ImageIcon(getClass().getResource("/downvote_icon.png"))); // NOI18N
-        jLabel28.setOpaque(true);
-        jPanel9.add(jLabel28);
-        jLabel28.setBounds(610, 20, 30, 30);
-
-        jLabel29.setBackground(new Color(102, 102, 0));
-        jLabel29.setIcon(new ImageIcon(getClass().getResource("/favorite_icon.png"))); // NOI18N
-        jLabel29.setOpaque(true);
-        jPanel9.add(jLabel29);
-        jLabel29.setBounds(650, 20, 30, 30);
-
-        jLabel30.setBackground(new Color(0, 102, 0));
-        jLabel30.setIcon(new ImageIcon(getClass().getResource("/upvote_icon.png"))); // NOI18N
-        jLabel30.setOpaque(true);
-        jPanel9.add(jLabel30);
-        jLabel30.setBounds(570, 20, 30, 30);
-
-        jPanel2.add(jPanel9);
-        jPanel9.setBounds(40, 800, 690, 310);
-
-        jPanel27.setBackground(new Color(102, 102, 102));
-        jPanel27.setLayout(null);
-
-        jPanel28.setBackground(new Color(200, 200, 200));
-        jPanel28.setLayout(null);
-
-        jPanel29.setBackground(new Color(200, 200, 200));
-        jPanel29.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(51, 51, 51), 2), "categories", TitledBorder.RIGHT, TitledBorder.BOTTOM, new Font("Segoe UI", 1, 12), new Color(51, 51, 51))); // NOI18N
-        jPanel29.setLayout(null);
-
-        jLabel55.setBackground(new Color(255, 153, 102));
-        jLabel55.setFont(new Font("Arial Narrow", 1, 14)); // NOI18N
-        jLabel55.setForeground(new Color(51, 51, 51));
-        jLabel55.setHorizontalAlignment(SwingConstants.CENTER);
-        jLabel55.setText("<html><center>\n<font color=\"green\">Environment</font>,\n<font color=\"red\">Lifting</font>, \n<font color=\"orange\">IDK</font>, \n<font color=\"blue\">Garbage</font>\n\n");
-        jPanel29.add(jLabel55);
-        jLabel55.setBounds(10, 6, 340, 20);
-
-        jPanel28.add(jPanel29);
-        jPanel29.setBounds(320, 210, 360, 40);
-
-        jPanel30.setBackground(new Color(200, 200, 200));
-        jPanel30.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(51, 51, 51), 2), "department", TitledBorder.RIGHT, TitledBorder.BOTTOM, new Font("Segoe UI", 1, 12), new Color(51, 51, 51))); // NOI18N
-        jPanel30.setForeground(new Color(0, 0, 0));
-        jPanel30.setLayout(null);
-
-        jLabel56.setFont(new Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel56.setForeground(new Color(0, 102, 102));
-        jLabel56.setHorizontalAlignment(SwingConstants.CENTER);
-        jLabel56.setText("ENSO");
-        jPanel30.add(jLabel56);
-        jLabel56.setBounds(10, 6, 150, 20);
-
-        jPanel28.add(jPanel30);
-        jPanel30.setBounds(140, 210, 170, 40);
-
-        jPanel31.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(51, 51, 51), 2), "severity", TitledBorder.RIGHT, TitledBorder.BOTTOM, new Font("Segoe UI", 1, 12), new Color(51, 51, 51))); // NOI18N
-        jPanel31.setOpaque(false);
-        jPanel31.setLayout(null);
-
-        jLabel57.setFont(new Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel57.setForeground(new Color(255, 51, 51));
-        jLabel57.setHorizontalAlignment(SwingConstants.CENTER);
-        jLabel57.setText("HIGH");
-        jPanel31.add(jLabel57);
-        jLabel57.setBounds(10, 6, 100, 20);
-
-        jPanel28.add(jPanel31);
-        jPanel31.setBounds(10, 210, 120, 40);
-
-        jScrollPane7.setBorder(null);
-
-        jTextArea6.setBackground(new Color(200, 200, 200));
-        jTextArea6.setColumns(20);
-        jTextArea6.setFont(new Font("Arial", 0, 16)); // NOI18N
-        jTextArea6.setForeground(new Color(51, 51, 51));
-        jTextArea6.setLineWrap(true);
-        jTextArea6.setRows(5);
-        jTextArea6.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac ligula nunc. Sed fringilla consequat mollis. Vestibulum lacus libero, pulvinar ut egestas ut, blandit ut est. Phasellus elementum fringilla lobortis. Donec at fermentum dolor. Fusce ullamcorper metus id lacus sodales pellentesque. Donec pretium tempor feugiat. Cras non mi Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac ligula nunc. Sed fringilla consequat mollis. Vestibulum lacus libero, pulvinar ut egestas ut, blandit ut est. Phasellus elementum fringilla lobortis. Donec at fermentum dolor. Fusce ullamcorper metus id lacus sodales pellentesque. Donec pretium tempor feugiat. Cras non mi non nunc efficitur tincidunt sed sed enim. non nunc efficitur tincidunt sed sed enim.");
-        jTextArea6.setWrapStyleWord(true);
-        jTextArea6.setBorder(null);
-        jScrollPane7.setViewportView(jTextArea6);
-
-        jPanel28.add(jScrollPane7);
-        jScrollPane7.setBounds(10, 40, 320, 160);
-
-        jLabel58.setIcon(new ImageIcon(getClass().getResource("/feed_image_sample2.jpg"))); // NOI18N
+        jLabel58.setIcon(new ImageIcon(getClass().getResource("/tmp_square.png"))); // NOI18N
         jLabel58.setOpaque(true);
-        jPanel28.add(jLabel58);
-        jLabel58.setBounds(340, 110, 180, 90);
+        post_imagescon.add(jLabel58);
 
-        jLabel59.setIcon(new ImageIcon(getClass().getResource("/feed_image_sample3.jpg"))); // NOI18N
-        jLabel59.setOpaque(true);
-        jPanel28.add(jLabel59);
-        jLabel59.setBounds(530, 10, 143, 190);
+        post_scrollimages.setViewportView(post_imagescon);
 
-        jLabel60.setFont(new Font("Product Sans Black", 1, 16)); // NOI18N
-        jLabel60.setForeground(new Color(0, 0, 0));
-        jLabel60.setText("Poor Garbage Collection System");
-        jPanel28.add(jLabel60);
-        jLabel60.setBounds(10, 10, 310, 30);
+        post_contentcon.add(post_scrollimages);
+        post_scrollimages.setBounds(390, 10, 290, 200);
 
-        jLabel61.setIcon(new ImageIcon(getClass().getResource("/feed_image_sample1.jpg"))); // NOI18N
-        jLabel61.setOpaque(true);
-        jPanel28.add(jLabel61);
-        jLabel61.setBounds(340, 10, 180, 90);
+        post_departmentlbl.setBackground(new Color(74, 20, 140));
+        post_departmentlbl.setFont(new Font("Segoe UI", 1, 14)); // NOI18N
+        post_departmentlbl.setForeground(new Color(255, 255, 255));
+        post_departmentlbl.setHorizontalAlignment(SwingConstants.CENTER);
+        post_departmentlbl.setText("ENSO");
+        post_departmentlbl.setOpaque(true);
+        post_contentcon.add(post_departmentlbl);
+        post_departmentlbl.setBounds(220, 220, 160, 30);
 
-        jPanel27.add(jPanel28);
-        jPanel28.setBounds(0, 50, 690, 260);
+        post_urgencylbl.setBackground(new Color(153, 0, 0));
+        post_urgencylbl.setFont(new Font("Segoe UI", 1, 14)); // NOI18N
+        post_urgencylbl.setForeground(new Color(255, 255, 255));
+        post_urgencylbl.setHorizontalAlignment(SwingConstants.CENTER);
+        post_urgencylbl.setText("HIGH");
+        post_urgencylbl.setOpaque(true);
+        post_contentcon.add(post_urgencylbl);
+        post_urgencylbl.setBounds(10, 220, 150, 30);
 
-        jPanel32.setBackground(new Color(200, 200, 200));
-        jPanel32.setLayout(null);
+        post_bgcon.add(post_contentcon);
+        post_contentcon.setBounds(0, 50, 690, 270);
 
-        jLabel62.setFont(new Font("Product Sans Black", 0, 14)); // NOI18N
-        jLabel62.setForeground(new Color(57, 45, 172));
-        jLabel62.setText("Tanya Degurechaff");
-        jPanel32.add(jLabel62);
-        jLabel62.setBounds(50, 0, 160, 40);
+        post_favcon.setBackground(new Color(204, 204, 0));
+        post_favcon.setIcon(new ImageIcon(getClass().getResource("/favorite_icon.png"))); // NOI18N
+        post_favcon.setOpaque(true);
+        post_bgcon.add(post_favcon);
+        post_favcon.setBounds(650, 50, 30, 0);
 
-        jLabel63.setIcon(new ImageIcon(getClass().getResource("/testprofile.jpg"))); // NOI18N
-        jPanel32.add(jLabel63);
-        jLabel63.setBounds(2, 2, 36, 36);
+        post_votecon.setLayout(null);
 
-        jPanel27.add(jPanel32);
-        jPanel32.setBounds(0, 10, 300, 40);
+        post_upvotelbl.setBackground(new Color(0, 204, 0));
+        post_upvotelbl.setIcon(new ImageIcon(getClass().getResource("/upvote_icon.png"))); // NOI18N
+        post_upvotelbl.setOpaque(true);
+        post_votecon.add(post_upvotelbl);
+        post_upvotelbl.setBounds(2, 2, 30, 30);
 
-        jLabel64.setBackground(new Color(102, 0, 0));
-        jLabel64.setIcon(new ImageIcon(getClass().getResource("/downvote_icon.png"))); // NOI18N
-        jLabel64.setOpaque(true);
-        jPanel27.add(jLabel64);
-        jLabel64.setBounds(610, 20, 30, 30);
+        post_downvotelbl.setBackground(new Color(255, 0, 51));
+        post_downvotelbl.setIcon(new ImageIcon(getClass().getResource("/downvote_icon.png"))); // NOI18N
+        post_downvotelbl.setOpaque(true);
+        post_votecon.add(post_downvotelbl);
+        post_downvotelbl.setBounds(68, 2, 30, 30);
 
-        jLabel65.setBackground(new Color(102, 102, 0));
-        jLabel65.setIcon(new ImageIcon(getClass().getResource("/favorite_icon.png"))); // NOI18N
-        jLabel65.setOpaque(true);
-        jPanel27.add(jLabel65);
-        jLabel65.setBounds(650, 20, 30, 30);
+        post_votelbl.setForeground(new Color(255, 255, 255));
+        post_votelbl.setHorizontalAlignment(SwingConstants.CENTER);
+        post_votelbl.setText("0");
+        post_votecon.add(post_votelbl);
+        post_votelbl.setBounds(32, 6, 36, 20);
 
-        jLabel66.setBackground(new Color(0, 102, 0));
-        jLabel66.setIcon(new ImageIcon(getClass().getResource("/upvote_icon.png"))); // NOI18N
-        jLabel66.setOpaque(true);
-        jPanel27.add(jLabel66);
-        jLabel66.setBounds(570, 20, 30, 30);
+        post_bgcon.add(post_votecon);
+        post_votecon.setBounds(540, 60, 100, 20);
 
-        jPanel2.add(jPanel27);
-        jPanel27.setBounds(40, 430, 690, 310);
+        jLabel1.setFont(new Font("Arial Black", 1, 45)); // NOI18N
+        jLabel1.setForeground(new Color(163, 163, 163));
+        jLabel1.setText("WITHDRAWN");
+        post_bgcon.add(jLabel1);
+        jLabel1.setBounds(380, -10, 350, 70);
 
-        jPanel33.setBackground(new Color(100, 100, 100));
-        jPanel33.setLayout(null);
+        jPanel2.add(post_bgcon);
 
-        jPanel34.setBackground(new Color(200, 200, 200));
-        jPanel34.setLayout(null);
+        pane_Feed.setViewportView(jPanel2);
 
-        jPanel35.setBackground(new Color(200, 200, 200));
-        jPanel35.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(51, 51, 51), 2), "categories", TitledBorder.RIGHT, TitledBorder.BOTTOM, new Font("Segoe UI", 1, 12), new Color(51, 51, 51))); // NOI18N
-        jPanel35.setLayout(null);
-
-        jLabel67.setBackground(new Color(255, 153, 102));
-        jLabel67.setFont(new Font("Arial Narrow", 1, 14)); // NOI18N
-        jLabel67.setForeground(new Color(51, 51, 51));
-        jLabel67.setHorizontalAlignment(SwingConstants.CENTER);
-        jLabel67.setText("<html><center>\n<font color=\"green\">Environment</font>,\n<font color=\"red\">Lifting</font>, \n<font color=\"orange\">IDK</font>, \n<font color=\"blue\">Garbage</font>\n\n");
-        jPanel35.add(jLabel67);
-        jLabel67.setBounds(10, 6, 340, 20);
-
-        jPanel34.add(jPanel35);
-        jPanel35.setBounds(320, 210, 360, 40);
-
-        jPanel36.setBackground(new Color(200, 200, 200));
-        jPanel36.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(51, 51, 51), 2), "department", TitledBorder.RIGHT, TitledBorder.BOTTOM, new Font("Segoe UI", 1, 12), new Color(51, 51, 51))); // NOI18N
-        jPanel36.setForeground(new Color(0, 0, 0));
-        jPanel36.setLayout(null);
-
-        jLabel68.setFont(new Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel68.setForeground(new Color(0, 102, 102));
-        jLabel68.setHorizontalAlignment(SwingConstants.CENTER);
-        jLabel68.setText("ENSO");
-        jPanel36.add(jLabel68);
-        jLabel68.setBounds(10, 6, 150, 20);
-
-        jPanel34.add(jPanel36);
-        jPanel36.setBounds(140, 210, 170, 40);
-
-        jPanel37.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(51, 51, 51), 2), "severity", TitledBorder.RIGHT, TitledBorder.BOTTOM, new Font("Segoe UI", 1, 12), new Color(51, 51, 51))); // NOI18N
-        jPanel37.setOpaque(false);
-        jPanel37.setLayout(null);
-
-        jLabel69.setFont(new Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel69.setForeground(new Color(255, 51, 51));
-        jLabel69.setHorizontalAlignment(SwingConstants.CENTER);
-        jLabel69.setText("HIGH");
-        jPanel37.add(jLabel69);
-        jLabel69.setBounds(10, 6, 100, 20);
-
-        jPanel34.add(jPanel37);
-        jPanel37.setBounds(10, 210, 120, 40);
-
-        jScrollPane8.setBorder(null);
-
-        jTextArea7.setBackground(new Color(200, 200, 200));
-        jTextArea7.setColumns(20);
-        jTextArea7.setFont(new Font("Arial", 0, 16)); // NOI18N
-        jTextArea7.setForeground(new Color(51, 51, 51));
-        jTextArea7.setLineWrap(true);
-        jTextArea7.setRows(5);
-        jTextArea7.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac ligula nunc. Sed fringilla consequat mollis. Vestibulum lacus libero, pulvinar ut egestas ut, blandit ut est. Phasellus elementum fringilla lobortis. Donec at fermentum dolor. Fusce ullamcorper metus id lacus sodales pellentesque. Donec pretium tempor feugiat. Cras non mi Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac ligula nunc. Sed fringilla consequat mollis. Vestibulum lacus libero, pulvinar ut egestas ut, blandit ut est. Phasellus elementum fringilla lobortis. Donec at fermentum dolor. Fusce ullamcorper metus id lacus sodales pellentesque. Donec pretium tempor feugiat. Cras non mi non nunc efficitur tincidunt sed sed enim. non nunc efficitur tincidunt sed sed enim.");
-        jTextArea7.setWrapStyleWord(true);
-        jTextArea7.setBorder(null);
-        jScrollPane8.setViewportView(jTextArea7);
-
-        jPanel34.add(jScrollPane8);
-        jScrollPane8.setBounds(10, 40, 320, 160);
-
-        jLabel70.setIcon(new ImageIcon(getClass().getResource("/feed_image_sample2.jpg"))); // NOI18N
-        jLabel70.setOpaque(true);
-        jPanel34.add(jLabel70);
-        jLabel70.setBounds(340, 110, 180, 90);
-
-        jLabel71.setIcon(new ImageIcon(getClass().getResource("/feed_image_sample3.jpg"))); // NOI18N
-        jLabel71.setOpaque(true);
-        jPanel34.add(jLabel71);
-        jLabel71.setBounds(530, 10, 143, 190);
-
-        jLabel72.setFont(new Font("Product Sans Black", 1, 16)); // NOI18N
-        jLabel72.setForeground(new Color(0, 0, 0));
-        jLabel72.setText("Poor Garbage Collection System");
-        jPanel34.add(jLabel72);
-        jLabel72.setBounds(10, 0, 310, 30);
-
-        jLabel73.setIcon(new ImageIcon(getClass().getResource("/feed_image_sample1.jpg"))); // NOI18N
-        jLabel73.setOpaque(true);
-        jPanel34.add(jLabel73);
-        jLabel73.setBounds(340, 10, 180, 90);
-
-        jPanel33.add(jPanel34);
-        jPanel34.setBounds(0, 50, 690, 260);
-
-        jPanel38.setBackground(new Color(200, 200, 200));
-        jPanel38.setLayout(null);
-
-        jLabel74.setFont(new Font("Product Sans Black", 0, 14)); // NOI18N
-        jLabel74.setForeground(new Color(57, 45, 172));
-        jLabel74.setText("Tanya Degurechaff");
-        jPanel38.add(jLabel74);
-        jLabel74.setBounds(50, 0, 160, 40);
-
-        jLabel75.setIcon(new ImageIcon(getClass().getResource("/testprofile.jpg"))); // NOI18N
-        jPanel38.add(jLabel75);
-        jLabel75.setBounds(2, 2, 36, 36);
-
-        jPanel33.add(jPanel38);
-        jPanel38.setBounds(0, 10, 300, 40);
-
-        jLabel76.setBackground(new Color(102, 0, 0));
-        jLabel76.setIcon(new ImageIcon(getClass().getResource("/downvote_icon.png"))); // NOI18N
-        jLabel76.setOpaque(true);
-        jPanel33.add(jLabel76);
-        jLabel76.setBounds(610, 20, 30, 30);
-
-        jLabel77.setBackground(new Color(102, 102, 0));
-        jLabel77.setIcon(new ImageIcon(getClass().getResource("/favorite_icon.png"))); // NOI18N
-        jLabel77.setOpaque(true);
-        jPanel33.add(jLabel77);
-        jLabel77.setBounds(650, 20, 30, 30);
-
-        jLabel78.setBackground(new Color(0, 102, 0));
-        jLabel78.setIcon(new ImageIcon(getClass().getResource("/upvote_icon.png"))); // NOI18N
-        jLabel78.setOpaque(true);
-        jPanel33.add(jLabel78);
-        jLabel78.setBounds(570, 20, 30, 30);
-
-        jPanel2.add(jPanel33);
-        jPanel33.setBounds(40, 100, 690, 310);
-
-        jScrollPane1.setViewportView(jPanel2);
-
-        formMain.add(jScrollPane1);
-        jScrollPane1.setBounds(250, 72, 750, 678);
+        formMain.add(pane_Feed);
+        pane_Feed.setBounds(250, 72, 750, 678);
+        pane_Feed.getVerticalScrollBar().setUnitIncrement(16);
 
         getContentPane().add(formMain);
 
@@ -728,94 +493,149 @@ public class CAIT extends javax.swing.JFrame {
         signinPanel.setBackground(new Color(200, 200, 200));
         signinPanel.setLayout(null);
 
-        jTextField2.setBackground(new Color(200, 200, 200));
-        jTextField2.setForeground(new Color(0, 0, 0));
-        jTextField2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(51, 51, 51), 2), "email", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Segoe UI", 1, 12), new Color(51, 51, 51))); // NOI18N
-        jTextField2.setCaretColor(new Color(0, 0, 0));
-        signinPanel.add(jTextField2);
-        jTextField2.setBounds(30, 30, 280, 50);
+        jtf_sig_username.setBackground(new Color(200, 200, 200));
+        jtf_sig_username.setForeground(new Color(0, 0, 0));
+        jtf_sig_username.setText("yelrahtej");
+        jtf_sig_username.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(51, 51, 51), 2), "username", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Segoe UI", 1, 12), new Color(51, 51, 51))); // NOI18N
+        jtf_sig_username.setCaretColor(new Color(0, 0, 0));
+        signinPanel.add(jtf_sig_username);
+        jtf_sig_username.setBounds(30, 30, 280, 50);
 
-        jButton3.setBackground(new Color(51, 153, 255));
-        jButton3.setFont(new Font("Product Sans Black", 1, 12)); // NOI18N
-        jButton3.setForeground(new Color(255, 255, 255));
-        jButton3.setText("Sign-in");
-        jButton3.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        signinPanel.add(jButton3);
-        jButton3.setBounds(30, 190, 280, 40);
+        btn_sig_submit.setBackground(new Color(51, 153, 255));
+        btn_sig_submit.setFont(new Font("Product Sans Black", 1, 12)); // NOI18N
+        btn_sig_submit.setForeground(new Color(255, 255, 255));
+        btn_sig_submit.setText("Sign-in");
+        btn_sig_submit.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btn_sig_submit.addActionListener(this::btn_sig_submitActionPerformed);
+        signinPanel.add(btn_sig_submit);
+        btn_sig_submit.setBounds(30, 90, 280, 40);
 
         jLabel10.setFont(new Font("Segoe UI", 1, 12)); // NOI18N
         jLabel10.setForeground(new Color(0, 51, 255));
         jLabel10.setText("Forgot Password?");
         signinPanel.add(jLabel10);
-        jLabel10.setBounds(120, 160, 100, 16);
+        jLabel10.setBounds(330, 90, 100, 16);
 
-        jPasswordField2.setBackground(new Color(200, 200, 200));
-        jPasswordField2.setForeground(new Color(0, 0, 0));
-        jPasswordField2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(51, 51, 51), 2), "password", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Segoe UI", 1, 12), new Color(51, 51, 51))); // NOI18N
-        signinPanel.add(jPasswordField2);
-        jPasswordField2.setBounds(30, 100, 280, 50);
+        jpf_sig_password.setBackground(new Color(200, 200, 200));
+        jpf_sig_password.setForeground(new Color(0, 0, 0));
+        jpf_sig_password.setText("NoAdjective_28");
+        jpf_sig_password.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(51, 51, 51), 2), "password", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Segoe UI", 1, 12), new Color(51, 51, 51))); // NOI18N
+        signinPanel.add(jpf_sig_password);
+        jpf_sig_password.setBounds(320, 30, 280, 50);
+
+        lbl_sig_errorMessage.setFont(new Font("Segoe UI", 1, 12)); // NOI18N
+        lbl_sig_errorMessage.setForeground(new Color(153, 0, 0));
+        lbl_sig_errorMessage.setHorizontalAlignment(SwingConstants.CENTER);
+        signinPanel.add(lbl_sig_errorMessage);
+        lbl_sig_errorMessage.setBounds(30, 140, 570, 20);
 
         formAuth.add(signinPanel);
-        signinPanel.setBounds(330, 250, 350, 260);
+        signinPanel.setBounds(200, 240, 640, 170);
 
         registerPanel.setBackground(new Color(200, 200, 200));
         registerPanel.setLayout(null);
 
-        jTextField3.setBackground(new Color(200, 200, 200));
-        jTextField3.setForeground(new Color(0, 0, 0));
-        jTextField3.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(51, 51, 51), 2), "email", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Segoe UI", 1, 12), new Color(51, 51, 51))); // NOI18N
-        jTextField3.setCaretColor(new Color(0, 0, 0));
-        registerPanel.add(jTextField3);
-        jTextField3.setBounds(30, 30, 280, 50);
+        jtf_reg_username.setBackground(new Color(200, 200, 200));
+        jtf_reg_username.setForeground(new Color(0, 0, 0));
+        jtf_reg_username.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(51, 51, 51), 2), "username", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Segoe UI", 1, 12), new Color(51, 51, 51))); // NOI18N
+        jtf_reg_username.setCaretColor(new Color(0, 0, 0));
+        jtf_reg_username.setNextFocusableComponent(jpf_reg_password);
+        registerPanel.add(jtf_reg_username);
+        jtf_reg_username.setBounds(30, 30, 280, 50);
 
-        jButton4.setBackground(new Color(51, 153, 255));
-        jButton4.setFont(new Font("Product Sans Black", 1, 12)); // NOI18N
-        jButton4.setForeground(new Color(255, 255, 255));
-        jButton4.setText("Sign-in");
-        jButton4.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        registerPanel.add(jButton4);
-        jButton4.setBounds(30, 240, 280, 40);
+        btn_Register.setBackground(new Color(51, 153, 255));
+        btn_Register.setFont(new Font("Product Sans Black", 1, 12)); // NOI18N
+        btn_Register.setForeground(new Color(255, 255, 255));
+        btn_Register.setText("Register");
+        btn_Register.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btn_Register.addActionListener(this::btn_RegisterActionPerformed);
+        registerPanel.add(btn_Register);
+        btn_Register.setBounds(30, 220, 280, 40);
 
-        jPasswordField1.setBackground(new Color(200, 200, 200));
-        jPasswordField1.setForeground(new Color(0, 0, 0));
-        jPasswordField1.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(51, 51, 51), 2), "confirm password", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Segoe UI", 1, 12), new Color(51, 51, 51))); // NOI18N
-        registerPanel.add(jPasswordField1);
-        jPasswordField1.setBounds(30, 170, 280, 50);
+        jpf_reg_password.setBackground(new Color(200, 200, 200));
+        jpf_reg_password.setForeground(new Color(0, 0, 0));
+        jpf_reg_password.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(51, 51, 51), 2), "password", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Segoe UI", 1, 12), new Color(51, 51, 51))); // NOI18N
+        jpf_reg_password.setNextFocusableComponent(jpf_reg_confirmPassword);
+        registerPanel.add(jpf_reg_password);
+        jpf_reg_password.setBounds(30, 90, 280, 50);
 
-        jPasswordField3.setBackground(new Color(200, 200, 200));
-        jPasswordField3.setForeground(new Color(0, 0, 0));
-        jPasswordField3.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(51, 51, 51), 2), "password", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Segoe UI", 1, 12), new Color(51, 51, 51))); // NOI18N
-        registerPanel.add(jPasswordField3);
-        jPasswordField3.setBounds(30, 100, 280, 50);
+        jpf_reg_confirmPassword.setBackground(new Color(200, 200, 200));
+        jpf_reg_confirmPassword.setForeground(new Color(0, 0, 0));
+        jpf_reg_confirmPassword.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(51, 51, 51), 2), "confirm password", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Segoe UI", 1, 12), new Color(51, 51, 51))); // NOI18N
+        jpf_reg_confirmPassword.setNextFocusableComponent(jtf_reg_lastName);
+        registerPanel.add(jpf_reg_confirmPassword);
+        jpf_reg_confirmPassword.setBounds(30, 150, 280, 50);
+
+        jtf_reg_lastName.setBackground(new Color(200, 200, 200));
+        jtf_reg_lastName.setForeground(new Color(0, 0, 0));
+        jtf_reg_lastName.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(51, 51, 51), 2), "last name", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Segoe UI", 1, 12), new Color(51, 51, 51))); // NOI18N
+        jtf_reg_lastName.setCaretColor(new Color(0, 0, 0));
+        registerPanel.add(jtf_reg_lastName);
+        jtf_reg_lastName.setBounds(330, 30, 280, 50);
+
+        jtf_reg_firstName.setBackground(new Color(200, 200, 200));
+        jtf_reg_firstName.setForeground(new Color(0, 0, 0));
+        jtf_reg_firstName.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(51, 51, 51), 2), "first name", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Segoe UI", 1, 12), new Color(51, 51, 51))); // NOI18N
+        jtf_reg_firstName.setCaretColor(new Color(0, 0, 0));
+        registerPanel.add(jtf_reg_firstName);
+        jtf_reg_firstName.setBounds(330, 90, 280, 50);
+
+        btn_reg_addProfilePic.setFont(new Font("Segoe UI", 1, 12)); // NOI18N
+        btn_reg_addProfilePic.setText("add profile picture");
+        btn_reg_addProfilePic.addActionListener(this::btn_reg_addProfilePicActionPerformed);
+        registerPanel.add(btn_reg_addProfilePic);
+        btn_reg_addProfilePic.setBounds(440, 190, 170, 40);
+
+        img_reg_profilePic.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
+        registerPanel.add(img_reg_profilePic);
+        img_reg_profilePic.setBounds(330, 160, 100, 100);
+
+        lbl_reg_errorMessage.setFont(new Font("Segoe UI", 1, 12)); // NOI18N
+        lbl_reg_errorMessage.setForeground(new Color(153, 0, 0));
+        lbl_reg_errorMessage.setHorizontalAlignment(SwingConstants.CENTER);
+        registerPanel.add(lbl_reg_errorMessage);
+        lbl_reg_errorMessage.setBounds(30, 270, 580, 20);
+
+        jLabel12.setForeground(new Color(51, 51, 51));
+        jLabel12.setHorizontalAlignment(SwingConstants.CENTER);
+        jLabel12.setText("(optional)");
+        registerPanel.add(jLabel12);
+        jLabel12.setBounds(440, 230, 170, 16);
+
+        lbl_reg_successMessage.setFont(new Font("Segoe UI", 1, 12)); // NOI18N
+        lbl_reg_successMessage.setForeground(new Color(0, 153, 0));
+        lbl_reg_successMessage.setHorizontalAlignment(SwingConstants.CENTER);
+        registerPanel.add(lbl_reg_successMessage);
+        lbl_reg_successMessage.setBounds(30, 270, 580, 20);
 
         formAuth.add(registerPanel);
-        registerPanel.setBounds(330, 250, 350, 310);
+        registerPanel.setBounds(200, 240, 640, 310);
 
-        jPanel6.setBackground(new Color(100, 100, 100));
-        jPanel6.setLayout(null);
+        pane_authTab.setBackground(new Color(100, 100, 100));
+        pane_authTab.setLayout(null);
 
-        signin_tab_button.setBackground(new Color(200, 200, 200));
-        signin_tab_button.setFont(new Font("Product Sans Black", 1, 14)); // NOI18N
-        signin_tab_button.setForeground(new Color(0, 102, 255));
-        signin_tab_button.setText("sign-in");
-        signin_tab_button.setBorder(null);
-        signin_tab_button.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        signin_tab_button.addActionListener(this::signin_tab_buttonActionPerformed);
-        jPanel6.add(signin_tab_button);
-        signin_tab_button.setBounds(10, 10, 80, 40);
+        btn_authTab_sig.setBackground(new Color(200, 200, 200));
+        btn_authTab_sig.setFont(new Font("Product Sans Black", 1, 14)); // NOI18N
+        btn_authTab_sig.setForeground(new Color(0, 102, 255));
+        btn_authTab_sig.setText("sign-in");
+        btn_authTab_sig.setBorder(null);
+        btn_authTab_sig.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btn_authTab_sig.addActionListener(this::btn_authTab_sigActionPerformed);
+        pane_authTab.add(btn_authTab_sig);
+        btn_authTab_sig.setBounds(10, 10, 80, 40);
 
-        register_tab_button.setBackground(new Color(100, 100, 100));
-        register_tab_button.setFont(new Font("Product Sans Black", 1, 14)); // NOI18N
-        register_tab_button.setForeground(new Color(200, 200, 200));
-        register_tab_button.setText("register");
-        register_tab_button.setBorder(null);
-        register_tab_button.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        register_tab_button.addActionListener(this::register_tab_buttonActionPerformed);
-        jPanel6.add(register_tab_button);
-        register_tab_button.setBounds(90, 10, 80, 40);
+        btn_authTab_reg.setBackground(new Color(100, 100, 100));
+        btn_authTab_reg.setFont(new Font("Product Sans Black", 1, 14)); // NOI18N
+        btn_authTab_reg.setForeground(new Color(200, 200, 200));
+        btn_authTab_reg.setText("register");
+        btn_authTab_reg.setBorder(null);
+        btn_authTab_reg.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btn_authTab_reg.addActionListener(this::btn_authTab_regActionPerformed);
+        pane_authTab.add(btn_authTab_reg);
+        btn_authTab_reg.setBounds(90, 10, 80, 40);
 
-        formAuth.add(jPanel6);
-        jPanel6.setBounds(330, 200, 350, 50);
+        formAuth.add(pane_authTab);
+        pane_authTab.setBounds(200, 190, 640, 50);
 
         getContentPane().add(formAuth);
 
@@ -835,154 +655,523 @@ public class CAIT extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tabButtonsHovered(ActionEvent evt) {
-        
+
     }
-    
-    
+
+
     private void jButton2ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void signin_tab_buttonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_signin_tab_buttonActionPerformed
+    private void btn_authTab_sigActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btn_authTab_sigActionPerformed
         registerPanel.setVisible(false);
         signinPanel.setVisible(true);
-        register_tab_button.setBackground(new Color(100, 100, 100));
-        register_tab_button.setForeground(new Color(200, 200, 200));
-        signin_tab_button.setBackground(new Color(200, 200, 200));
-        signin_tab_button.setForeground(new Color(0, 100, 255));
-    }//GEN-LAST:event_signin_tab_buttonActionPerformed
+        btn_authTab_reg.setBackground(new Color(100, 100, 100));
+        btn_authTab_reg.setForeground(new Color(200, 200, 200));
+        btn_authTab_sig.setBackground(new Color(200, 200, 200));
+        btn_authTab_sig.setForeground(new Color(0, 100, 255));
+    }//GEN-LAST:event_btn_authTab_sigActionPerformed
 
-    private void register_tab_buttonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_register_tab_buttonActionPerformed
+    private void btn_authTab_regActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btn_authTab_regActionPerformed
         registerPanel.setVisible(true);
         signinPanel.setVisible(false);
-        signin_tab_button.setBackground(new Color(100, 100, 100));
-        signin_tab_button.setForeground(new Color(200, 200, 200));
-        register_tab_button.setBackground(new Color(200, 200, 200));
-        register_tab_button.setForeground(new Color(0, 100, 255));
-    }//GEN-LAST:event_register_tab_buttonActionPerformed
+        btn_authTab_sig.setBackground(new Color(100, 100, 100));
+        btn_authTab_sig.setForeground(new Color(200, 200, 200));
+        btn_authTab_reg.setBackground(new Color(200, 200, 200));
+        btn_authTab_reg.setForeground(new Color(0, 100, 255));
+    }//GEN-LAST:event_btn_authTab_regActionPerformed
+
+    File tmpRegisterProfilePic = null;
+    private void btn_reg_addProfilePicActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btn_reg_addProfilePicActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                "Image files", "jpg", "jpeg", "png", "gif");
+        fileChooser.setFileFilter(filter);
+        int result = fileChooser.showOpenDialog(this);
+        File selectedFile = fileChooser.getSelectedFile();
+
+        while (true) {
+            if (result == JFileChooser.APPROVE_OPTION) {
+                try {
+                    String mimeType = Files.probeContentType(selectedFile.toPath());
+                    if (mimeType == null || !mimeType.startsWith("image/")) {
+                        JOptionPane.showMessageDialog(this,
+                                "Invalid file type! Please select an image.",
+                                "Error",
+                                JOptionPane.ERROR_MESSAGE);
+                        result = fileChooser.showOpenDialog(this);
+                        selectedFile = fileChooser.getSelectedFile();
+                    } else if ((selectedFile.length() / 1024.0 / 1024.0 > 5)) {
+                        JOptionPane.showMessageDialog(this,
+                                "Image must be less than 5MB.",
+                                "Error",
+                                JOptionPane.ERROR_MESSAGE);
+                        result = fileChooser.showOpenDialog(this);
+                        selectedFile = fileChooser.getSelectedFile();
+                    } else {
+                        tmpRegisterProfilePic = selectedFile;
+                        ImageIcon icon = new ImageIcon(selectedFile.getAbsolutePath());
+                        Image img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+                        img_reg_profilePic.setIcon(new ImageIcon(img));
+                        break;
+                    }
+                } catch (HeadlessException | IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                break;
+            }
+        }
+    }//GEN-LAST:event_btn_reg_addProfilePicActionPerformed
+
+    private void btn_RegisterActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btn_RegisterActionPerformed
+        String username = jtf_reg_username.getText();
+        char[] password = jpf_reg_password.getPassword();
+        char[] confirmpass = jpf_reg_confirmPassword.getPassword();
+        String lastname = jtf_reg_lastName.getText();
+        String firstname = jtf_reg_firstName.getText();
+
+        // --- Validators ---
+        if (username.isEmpty()) {
+            lbl_reg_errorMessage.setText("Username cannot be empty");
+        } else if (username.length() < 4) {
+            lbl_reg_errorMessage.setText("Username must be at least 4 characters");
+        } else if (db.isUserExist(username)) {
+            lbl_reg_errorMessage.setText("User already exists");
+        } else if (password.length == 0) {
+            lbl_reg_errorMessage.setText("Password cannot be empty");
+        } else if (password.length < 6) {
+            lbl_reg_errorMessage.setText("Password must be at least 6 characters");
+        } else if (!String.valueOf(password).equals(String.valueOf(confirmpass))) {
+            lbl_reg_errorMessage.setText("Passwords do not match");
+        } else if (lastname.isEmpty()) {
+            lbl_reg_errorMessage.setText("Last name cannot be empty");
+        } else if (firstname.isEmpty()) {
+            lbl_reg_errorMessage.setText("First name cannot be empty");
+        } else if (!username.matches("[A-Za-z0-9_]+")) {
+            lbl_reg_errorMessage.setText("Username can only contain letters, numbers, and underscore");
+        } else if (!String.valueOf(password).matches(".*[A-Z].*")) {
+            lbl_reg_errorMessage.setText("Password must contain at least one uppercase letter");
+        } else if (!String.valueOf(password).matches(".*[a-z].*")) {
+            lbl_reg_errorMessage.setText("Password must contain at least one lowercase letter");
+        } else if (!String.valueOf(password).matches(".*\\d.*")) {
+            lbl_reg_errorMessage.setText("Password must contain at least one number");
+        } else {
+            try {
+                ObjectId avatarId = (tmpRegisterProfilePic != null)
+                        ? db.uploadImage(tmpRegisterProfilePic)
+                        : new ObjectId("68ee3df285395834c6cfe777");
+
+                Document userDoc = new Document()
+                        .append("username", username)
+                        .append("password", Passworder.hashPassword(password))
+                        .append("first_name", firstname)
+                        .append("last_name", lastname)
+                        .append("avatar", avatarId)
+                        .append("role", Role.USER.toString());
+
+                ObjectId insertedId = db.addUser(userDoc);
+                user = db.getUser(insertedId);
+                lbl_reg_errorMessage.setText("");
+                lbl_reg_successMessage.setText("Registered Successfully! ID: " + insertedId);
+
+                Arrays.fill(password, '\0');
+                Arrays.fill(confirmpass, '\0');
+                jtf_reg_username.setText("");
+                jpf_reg_password.setText("");
+                jpf_reg_confirmPassword.setText("");
+                jtf_reg_firstName.setText("");
+                jtf_reg_lastName.setText("");
+                img_reg_profilePic.setIcon(null);
+                setupFeed();
+            } catch (Exception e) {
+                e.printStackTrace();
+                lbl_reg_errorMessage.setText("Registration failed: " + e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_btn_RegisterActionPerformed
+
+    private void setupFeed() {
+        ArrayList<Issue> posts = db.getPosts(1);
+        for (Issue post : posts) {
+            JPanel bgcon = new JPanel();
+
+            bgcon.setPreferredSize(new Dimension(690, 320));
+            bgcon.setLayout(null);
+            bgcon.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent evt) {
+                    boolean ha = false;
+                    do {
+                        ReportView rv = new ReportView(CAIT.this, true);
+                        ha = rv.showDialog(post);
+                    } while (ha);
+                }
+            });
+            JPanel namecon = new JPanel();
+            namecon.setBackground(new Color(230, 230, 230));
+            namecon.setLayout(null);
+
+            JLabel namelabel = new JLabel();
+            namelabel.setFont(new Font("Century Gothic", 1, 16)); // NOI18N
+            namelabel.setForeground(new Color(51, 153, 0));
+            namelabel.setText(post.user.firstName + " " + post.user.lastName);
+            namecon.add(namelabel);
+            namelabel.setBounds(50, 10, 310, 30);
+
+            JLabel usericon = new JLabel();
+            usericon.setIcon(db.getImage(post.user.avatar, 30)); // NOI18N
+            namecon.add(usericon);
+            usericon.setBounds(10, 10, 30, 30);
+
+            bgcon.add(namecon);
+            namecon.setBounds(0, 10, 390, 50);
+
+            JPanel contentcon = new JPanel();
+            contentcon.setBackground(new Color(230, 230, 230));
+            contentcon.setLayout(null);
+
+            JLabel headerlbl = new JLabel();
+            headerlbl.setFont(new Font("Arial", 1, 16)); // NOI18N
+            headerlbl.setForeground(new Color(0, 0, 0));
+            headerlbl.setText(post.title.toUpperCase());
+            contentcon.add(headerlbl);
+            headerlbl.setBounds(10, 10, 370, 30);
+
+            JPanel catcon = new JPanel();
+            catcon.setBackground(new Color(200, 200, 200));
+            catcon.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(51, 51, 51), 2), "categories", TitledBorder.RIGHT, TitledBorder.BOTTOM, new Font("Segoe UI", 1, 12), new Color(51, 51, 51))); // NOI18N
+            catcon.setOpaque(false);
+            catcon.setLayout(null);
+
+            JLabel catlist = new JLabel();
+            catlist.setBackground(new Color(255, 153, 102));
+            catlist.setFont(new Font("Arial Narrow", 1, 14)); // NOI18N
+            catlist.setForeground(new Color(51, 51, 51));
+            catlist.setHorizontalAlignment(SwingConstants.CENTER);
+            //catlist.setText("<html><center>\n<font color=\"green\">Environment</font>,\n<font color=\"red\">Lifting</font>, \n<font color=\"orange\">IDK</font>, \n<font color=\"blue\">Garbage</font>\n\n");
+            catlist.setText(String.join(", ", post.tags));
+            catcon.add(catlist);
+            catlist.setBounds(10, 6, 270, 20);
+
+            contentcon.add(catcon);
+            catcon.setBounds(390, 218, 290, 40);
+
+            JScrollPane scrolldescription = new JScrollPane();
+            scrolldescription.setBorder(null);
+
+            JTextArea descriptionarea = new JTextArea();
+            descriptionarea.setBackground(new Color(230, 230, 230));
+            descriptionarea.setColumns(20);
+            descriptionarea.setFont(new Font("Arial", 0, 14)); // NOI18N
+            descriptionarea.setForeground(new Color(51, 51, 51));
+            descriptionarea.setLineWrap(true);
+            descriptionarea.setRows(5);
+            descriptionarea.setText(post.description);
+            descriptionarea.setWrapStyleWord(true);
+            descriptionarea.setBorder(null);
+            scrolldescription.setViewportView(descriptionarea);
+
+            contentcon.add(scrolldescription);
+            scrolldescription.setBounds(10, 40, 370, 160);
+
+            SwingUtilities.invokeLater(() -> {
+                scrolldescription.getVerticalScrollBar().setValue(0);
+                scrolldescription.getVerticalScrollBar().setUnitIncrement(15);
+            });
+
+            JScrollPane scrollimages = new JScrollPane();
+            scrollimages.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+            scrollimages.setOpaque(false);
+
+            JPanel imagescon = new JPanel();
+            imagescon.setOpaque(false);
+            imagescon.setLayout(new FlowLayout(FlowLayout.LEFT));
+            for (ObjectId image : post.images) {
+                JLabel imgLabel = new JLabel();
+                imgLabel.setIcon(db.getImage(image, 180));
+                imgLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                imgLabel.setToolTipText("Click to view image.");
+                imgLabel.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent evt) {
+                        JOptionPane.showMessageDialog(CAIT.this, "", "Full Image View", JOptionPane.PLAIN_MESSAGE, db.getOriginalImage(image));
+                        
+                    }
+                });
+                imagescon.add(imgLabel);
+            }
+
+            scrollimages.setViewportView(imagescon);
+
+            contentcon.add(scrollimages);
+            scrollimages.setBounds(390, 10, 290, 200);
+
+            JLabel departmentlbl = new JLabel();
+            switch (post.department) {
+                case "ENSO" ->
+                    departmentlbl.setBackground(new Color(0, 102, 0));
+                default ->
+                    departmentlbl.setBackground(Color.gray);
+            }
+            departmentlbl.setFont(new Font("Segoe UI", 1, 14)); // NOI18N
+            departmentlbl.setForeground(new Color(255, 255, 255));
+            departmentlbl.setHorizontalAlignment(SwingConstants.CENTER);
+            departmentlbl.setText(post.department);
+            departmentlbl.setOpaque(true);
+            contentcon.add(departmentlbl);
+            departmentlbl.setBounds(220, 220, 160, 30);
+
+            JLabel urgencylbl = new JLabel();
+
+            urgencylbl.setFont(new Font("Segoe UI", 1, 14)); // NOI18N
+            urgencylbl.setForeground(new Color(255, 255, 255));
+            urgencylbl.setHorizontalAlignment(SwingConstants.CENTER);
+            urgencylbl.setText(post.severity.toString());
+            switch (post.severity) {
+                case SEVERE ->
+                    urgencylbl.setBackground(new Color(102, 0, 0));
+                case HIGH ->
+                    urgencylbl.setBackground(new Color(153, 0, 0));
+                case MEDIUM ->
+                    urgencylbl.setBackground(new Color(204, 102, 0));
+                case LOW ->
+                    urgencylbl.setBackground(new Color(153, 153, 0));
+                default ->
+                    urgencylbl.setBackground(new Color(64, 64, 64));
+            }
+            urgencylbl.setOpaque(true);
+            contentcon.add(urgencylbl);
+            urgencylbl.setBounds(10, 220, 150, 30);
+
+            bgcon.add(contentcon);
+            contentcon.setBounds(0, 50, 690, 270);
+            /*
+            JButton favcon = new JButton();
+            favcon.setBackground(new Color(204, 204, 0));
+            favcon.setIcon(new ImageIcon(getClass().getResource("/favorite_icon.png"))); // NOI18N
+            favcon.setOpaque(true);
+            bgcon.add(favcon);
+            favcon.setBounds(650, 20, 30, 30);
+
+            JPanel votecon = new JPanel();
+            votecon.setLayout(null);
+
+            JButton upvotelbl = new JButton();
+            upvotelbl.setBackground(new Color(0, 204, 0));
+            upvotelbl.setIcon(new ImageIcon(getClass().getResource("/upvote_icon.png"))); // NOI18N
+            upvotelbl.setOpaque(true);
+            votecon.add(upvotelbl);
+            upvotelbl.setBounds(2, 2, 30, 30);
+
+            JButton downvotelbl = new JButton();
+            downvotelbl.setBackground(new Color(255, 0, 51));
+            downvotelbl.setIcon(new ImageIcon(getClass().getResource("/downvote_icon.png"))); // NOI18N
+            downvotelbl.setOpaque(true);
+            votecon.add(downvotelbl);
+            downvotelbl.setBounds(68, 2, 30, 30);
+
+            JLabel votelbl = new JLabel();
+            votelbl.setForeground(new Color(255, 255, 255));
+            votelbl.setHorizontalAlignment(SwingConstants.CENTER);
+            votelbl.setText("0");
+            votecon.add(votelbl);
+            votelbl.setBounds(32, 6, 36, 20);
+            bgcon.add(votecon);
+            votecon.setBounds(540, 20, 100, 60);
+             */
+            JLabel statuslbl = new JLabel();
+            switch (post.getStatus()) {
+                case OPEN -> {
+                    statuslbl.setFont(new Font("Arial Black", 1, 80));
+                    statuslbl.setText("OPEN");
+                    statuslbl.setForeground(new Color(81, 167, 255));
+                    bgcon.setBackground(new Color(51, 153, 255));
+                }
+                case ONGOING -> {
+                    statuslbl.setFont(new Font("Arial Black", 1, 60));
+                    statuslbl.setText("ONGOING");
+                    statuslbl.setForeground(new Color(185, 185, 0));
+                    bgcon.setBackground(new Color(200, 200, 0));
+                }
+                case RESOLVED -> {
+                    statuslbl.setFont(new Font("Arial Black", 1, 55));
+                    statuslbl.setText("RESOLVED");
+                    statuslbl.setForeground(new Color(0, 110, 0));
+                    bgcon.setBackground(new Color(0, 130, 0));
+                }
+                case REJECTED -> {
+                    statuslbl.setFont(new Font("Arial Black", 1, 55));
+                    statuslbl.setText("REJECTED");
+                    statuslbl.setForeground(new Color(224, 0, 0));
+                    bgcon.setBackground(new Color(204, 0, 0));
+                }
+                case CANCELED -> {
+                    statuslbl.setFont(new Font("Arial Black", 1, 52));
+                    statuslbl.setText("REJECTED");
+                    statuslbl.setForeground(new Color(224, 0, 0));
+                    bgcon.setBackground(new Color(204, 0, 0));
+                }
+                case WITHDRAWN -> {
+                    statuslbl.setFont(new Font("Arial Black", 1, 45));
+                    statuslbl.setText("WITHDRAWN");
+                    statuslbl.setForeground(new Color(163, 163, 163));
+                    bgcon.setBackground(new Color(153, 153, 153));
+                }
+            }
+            bgcon.add(statuslbl);
+            statuslbl.setBounds(380, -10, 350, 70);
+
+            jPanel2.add(bgcon);
+            jPanel2.setPreferredSize(new Dimension(750, jPanel2.getPreferredSize().height + 325));
+        }
+
+        formAuth.setVisible(false);
+        formMain.setVisible(true);
+    }
+
+    private void jButton1ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        CreatePost dialog = new CreatePost(this, true);
+        Issue result = dialog.showDialog();
+        if (result == null) {
+            System.out.println("Canceled!");
+        } else {
+            ObjectId obid = db.addPost(result.toDoc());
+            if (obid == null) {
+                System.out.println("Failed to create post.");
+            } else {
+                System.out.println("Post created with id: " + obid.toHexString());
+                JButton first = (JButton) jPanel2.getComponent(0);
+                jPanel2.removeAll();
+                jPanel2.add(first);
+                jPanel2.revalidate();
+                jPanel2.repaint();
+                jPanel2.setPreferredSize(new Dimension(750, 65));
+                setupFeed();
+
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btn_sig_submitActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btn_sig_submitActionPerformed
+        String username = jtf_sig_username.getText();
+        char[] password = jpf_sig_password.getPassword();
+        if (username.isEmpty()) {
+            lbl_sig_errorMessage.setText("Username cannot be empty");
+            return;
+        } else if (username.length() < 4) {
+            lbl_sig_errorMessage.setText("Username must be at least 4 characters");
+            return;
+        } else if (!db.isUserExist(username)) {
+            lbl_sig_errorMessage.setText("User doesn't exist.");
+            return;
+        } else if (password.length == 0) {
+            lbl_sig_errorMessage.setText("Password Field is empty.");
+            return;
+        }
+        Document userDoc = db.getUserDoc(username);
+        if (!Passworder.verifyPassword(password, userDoc.getString("password"))) {
+            lbl_sig_errorMessage.setText("Wrong password.");
+            return;
+        }
+        Arrays.fill(password, '\0');
+        user = db.getUser(userDoc);
+        jtf_sig_username.setText("");
+        jpf_sig_password.setText("");
+        setupFeed();
+    }//GEN-LAST:event_btn_sig_submitActionPerformed
+
+    private void post_bgconMouseClicked(MouseEvent evt) {//GEN-FIRST:event_post_bgconMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_post_bgconMouseClicked
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+
+        System.out.println("Initializing the MongoDB database.");
+
         try {
             UIManager.setLookAndFeel(new FlatDarkLaf());
-             
-             
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(CAIT.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CAIT().setVisible(true);
-            }
-        });
+        EventQueue.invokeLater(() -> new CAIT().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JPanel basePlate;
+    private JButton btn_Register;
+    private JButton btn_authTab_reg;
+    private JButton btn_authTab_sig;
+    private JButton btn_reg_addProfilePic;
+    private JButton btn_sig_submit;
     private JPanel formAuth;
     private JPanel formMain;
+    private JLabel img_reg_profilePic;
     private JButton jButton1;
     private JButton jButton10;
     private JButton jButton11;
     private JButton jButton2;
-    private JButton jButton3;
-    private JButton jButton4;
     private JButton jButton6;
     private JButton jButton7;
     private JLabel jLabel1;
     private JLabel jLabel10;
     private JLabel jLabel11;
+    private JLabel jLabel12;
     private JLabel jLabel13;
     private JLabel jLabel14;
     private JLabel jLabel15;
-    private JLabel jLabel19;
-    private JLabel jLabel2;
-    private JLabel jLabel20;
-    private JLabel jLabel21;
-    private JLabel jLabel22;
-    private JLabel jLabel23;
-    private JLabel jLabel24;
-    private JLabel jLabel25;
-    private JLabel jLabel26;
-    private JLabel jLabel27;
-    private JLabel jLabel28;
-    private JLabel jLabel29;
-    private JLabel jLabel3;
-    private JLabel jLabel30;
-    private JLabel jLabel4;
     private JLabel jLabel5;
-    private JLabel jLabel55;
-    private JLabel jLabel56;
-    private JLabel jLabel57;
     private JLabel jLabel58;
-    private JLabel jLabel59;
-    private JLabel jLabel6;
-    private JLabel jLabel60;
     private JLabel jLabel61;
-    private JLabel jLabel62;
-    private JLabel jLabel63;
-    private JLabel jLabel64;
-    private JLabel jLabel65;
-    private JLabel jLabel66;
-    private JLabel jLabel67;
-    private JLabel jLabel68;
-    private JLabel jLabel69;
     private JLabel jLabel7;
-    private JLabel jLabel70;
-    private JLabel jLabel71;
-    private JLabel jLabel72;
-    private JLabel jLabel73;
-    private JLabel jLabel74;
-    private JLabel jLabel75;
-    private JLabel jLabel76;
-    private JLabel jLabel77;
-    private JLabel jLabel78;
-    private JLabel jLabel8;
-    private JLabel jLabel9;
-    private JPanel jPanel1;
-    private JPanel jPanel10;
-    private JPanel jPanel11;
-    private JPanel jPanel12;
-    private JPanel jPanel13;
-    private JPanel jPanel14;
     private JPanel jPanel2;
-    private JPanel jPanel27;
-    private JPanel jPanel28;
-    private JPanel jPanel29;
     private JPanel jPanel3;
-    private JPanel jPanel30;
-    private JPanel jPanel31;
-    private JPanel jPanel32;
-    private JPanel jPanel33;
-    private JPanel jPanel34;
-    private JPanel jPanel35;
-    private JPanel jPanel36;
-    private JPanel jPanel37;
-    private JPanel jPanel38;
     private JPanel jPanel5;
-    private JPanel jPanel6;
-    private JPanel jPanel9;
-    private JPasswordField jPasswordField1;
-    private JPasswordField jPasswordField2;
-    private JPasswordField jPasswordField3;
-    private JScrollPane jScrollPane1;
-    private JScrollPane jScrollPane4;
-    private JScrollPane jScrollPane7;
-    private JScrollPane jScrollPane8;
-    private JTextArea jTextArea3;
-    private JTextArea jTextArea6;
-    private JTextArea jTextArea7;
-    private JTextField jTextField2;
-    private JTextField jTextField3;
-    private JPanel left_panel;
+    private JPasswordField jpf_reg_confirmPassword;
+    private JPasswordField jpf_reg_password;
+    private JPasswordField jpf_sig_password;
+    private JTextField jtf_reg_firstName;
+    private JTextField jtf_reg_lastName;
+    private JTextField jtf_reg_username;
+    private JTextField jtf_sig_username;
+    private JLabel lbl_reg_errorMessage;
+    private JLabel lbl_reg_successMessage;
+    private JLabel lbl_sig_errorMessage;
+    private JLabel mainHeader_lineBreak;
+    private JLabel mainHeader_subtitle;
+    private JLabel mainHeader_title;
+    private JScrollPane pane_Feed;
+    private JPanel pane_authTab;
+    private JPanel pane_left_panel;
+    private JPanel pane_main_header;
+    private JLabel pane_main_topSeparator;
+    private JLabel pmhgr1;
+    private JLabel pmhgr2;
+    private JLabel pmhgr3;
+    private JPanel post_bgcon;
+    private JPanel post_catcon;
+    private JLabel post_catlist;
+    private JPanel post_contentcon;
+    private JLabel post_departmentlbl;
+    private JTextArea post_descriptionarea;
+    private JLabel post_downvotelbl;
+    private JLabel post_favcon;
+    private JLabel post_headerlbl;
+    private JPanel post_imagescon;
+    private JPanel post_namecon;
+    private JLabel post_namelabel;
+    private JScrollPane post_scrolldescription;
+    private JScrollPane post_scrollimages;
+    private JLabel post_upvotelbl;
+    private JLabel post_urgencylbl;
+    private JLabel post_usericon;
+    private JPanel post_votecon;
+    private JLabel post_votelbl;
     private JPanel registerPanel;
-    private JButton register_tab_button;
     private JPanel signinPanel;
-    private JButton signin_tab_button;
     // End of variables declaration//GEN-END:variables
 }

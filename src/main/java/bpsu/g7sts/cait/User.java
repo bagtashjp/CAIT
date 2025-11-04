@@ -8,12 +8,30 @@ package bpsu.g7sts.cait;
  *
  * @author Xthliene
  */
+
+
+import org.bson.Document;
+import org.bson.types.ObjectId;
+
 public class User {
-    int id;
-    int lastName;
-    int firstName;
-    int middleName;
-    int role;
+    ObjectId id;
+    String username;
+    String lastName;
+    String firstName;
+    ObjectId avatar;
+    Role role = Role.USER;
+    public User(){}
+    public User(Document doc) {
+        id = doc.getObjectId("_id");
+        username = doc.getString("username");
+        lastName = doc.getString("last_name");
+        firstName = doc.getString("first_name");
+        avatar = doc.getObjectId("avatar");
+        role = Role.valueOf(doc.getString("role"));
+    }
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
 }
 
 enum Role {
